@@ -21,5 +21,14 @@
       <description>Embed your slides or video here using shortcodes. Further details can easily be added using Markdown and $\rm \LaTeX$ math code.</description>
     </item>
     
+    <item>
+      <title>R-Ladies Lightning Talk</title>
+      <link>/talk/r-ladies-talk/</link>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +1100</pubDate>
+      
+      <guid>/talk/r-ladies-talk/</guid>
+      <description>Embed your slides or video here using shortcodes. Further details can easily be added using Markdown and $\rm \LaTeX$ math code.</description>
+    </item>
+    
   </channel>
 </rss>
