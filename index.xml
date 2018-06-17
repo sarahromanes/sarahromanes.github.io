@@ -11,6 +11,15 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Bayesian hypothesis tests with diffuse priors: Can we have our cake and eat it too?</title>
+      <link>/publication/bayesian-testing/</link>
+      <pubDate>Wed, 25 Oct 2017 00:00:00 +1100</pubDate>
+      
+      <guid>/publication/bayesian-testing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>R-Ladies Lightning Talk</title>
       <link>/talk/r-ladies-talk/</link>
       <pubDate>Sun, 01 Jan 2017 00:00:00 +1100</pubDate>
