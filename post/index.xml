@@ -12,5 +12,14 @@
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     
+    <item>
+      <title>R-Ladies Sydney Launch!</title>
+      <link>/post/r-ladies-sydney-launch/</link>
+      <pubDate>Fri, 22 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/r-ladies-sydney-launch/</guid>
+      <description>The Launch!Wow, what a launch! Thank you so much Jen, Dani, Steph, and Lisa for all your work setting up this launch! I can’t wait to see what the future events will hold! I was lucky enough to be able to give a lightening talk describing my R journey below - of which I have summarised for those who could not be there! You can also find the slides here.</description>
+    </item>
+    
   </channel>
 </rss>

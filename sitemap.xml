@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>/post/r-ladies-sydney-launch/</loc>
+      <lastmod>2018-06-22T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/publication/bayesian-testing/</loc>
       <lastmod>2017-10-25T00:00:00+11:00</lastmod>
     </url>
@@ -137,6 +146,26 @@
     
       <loc>/publication_types/</loc>
       <lastmod>2017-10-25T00:00:00+11:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/r-la/</loc>
+      <lastmod>2018-06-22T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/categories/r-ladies/</loc>
+      <lastmod>2018-06-22T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     

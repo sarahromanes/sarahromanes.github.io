@@ -11,6 +11,78 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>R-Ladies Sydney Launch!</title>
+      <link>/post/r-ladies-sydney-launch/</link>
+      <pubDate>Fri, 22 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/r-ladies-sydney-launch/</guid>
+      <description>&lt;link href=&#34;/rmarkdown-libs/font-awesome/css/fontawesome-all.min.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;link href=&#34;/rmarkdown-libs/font-awesome-animation/font-awesome-animation.min.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;/rmarkdown-libs/fontawesome/js/fontawesome-all.min.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;div id=&#34;the-launch&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;The Launch!&lt;/h1&gt;
+&lt;p&gt;Wow, what a launch! Thank you so much &lt;a href=&#34;https://twitter.com/JenRichmondPhD&#34;&gt;&lt;strong&gt;Jen&lt;/strong&gt;&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/djnavarro&#34;&gt;&lt;strong&gt;Dani&lt;/strong&gt;&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/StephdeSilva&#34;&gt;&lt;strong&gt;Steph&lt;/strong&gt;&lt;/a&gt;, and &lt;a href=&#34;https://twitter.com/williamslisaphd&#34;&gt;&lt;strong&gt;Lisa&lt;/strong&gt;&lt;/a&gt; for all your work setting up this launch! I can’t wait to see what the future events will hold! I was lucky enough to be able to give a lightening talk describing my R journey below - of which I have summarised for those who could not be there! You can also find the slides &lt;a href=&#34;https://sarahromanes.github.io/recent-talk&#34;&gt;&lt;strong&gt;here&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;center&gt;
+&lt;p&gt;&lt;img src=&#34;/static/img/montage.jpg&#34; width=&#34;700px&#34; /&gt;&lt;/p&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;div id=&#34;my-long-journey-using-r---a-summary&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;My (long) journey using R - a summary!!&lt;/h1&gt;
+&lt;p&gt;My background is in mathematical statistics, in which I was introduced to R during my BSc degree, and used it from first year all the way through to my honours year. R was introduced to me as a glorified calculator in first year, with it’s main purpose to do basic tests and calclate probabilities! In fact, now that I think about it, I didn’t even &lt;strong&gt;read in&lt;/strong&gt; data into R until my 2nd semester of 2nd year. Crazy!!!&lt;/p&gt;
+&lt;div id=&#34;what-i-was-formally-taught-during-my-undergraduate-degree-in-r-2012---2015&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;What I was formally taught during my undergraduate degree in R (2012 - 2015)&lt;/h3&gt;
+&lt;p&gt;&lt;i class=&#34;fas  fa-check &#34;&gt;&lt;/i&gt; Statistical modelling techniques&lt;/p&gt;
+&lt;p&gt;&lt;i class=&#34;fas  fa-check &#34;&gt;&lt;/i&gt; … and through that, baseR (by experience).&lt;/p&gt;
+&lt;p&gt;&lt;i class=&#34;fas  fa-check &#34;&gt;&lt;/i&gt; Basic report making via Sweave implementation&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;Essentially - a strong focus on Statistics, and less focus on Data Science! R was a means to the end.&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;what-i-was-not-formally-taught-during-my-undergraduate-degree&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;What I was NOT formally taught during my undergraduate degree&lt;/h3&gt;
+&lt;p&gt;&lt;i class=&#34;fas  fa-times &#34;&gt;&lt;/i&gt; tidyverse, eg. &lt;code&gt;ggplot2&lt;/code&gt;, &lt;code&gt;dplyr&lt;/code&gt;, &lt;code&gt;purrr&lt;/code&gt; packages&lt;/p&gt;
+&lt;p&gt;&lt;i class=&#34;fas  fa-times &#34;&gt;&lt;/i&gt; rmarkdown/ xaringan slides/ blogdown&lt;/p&gt;
+&lt;p&gt;&lt;i class=&#34;fas  fa-times &#34;&gt;&lt;/i&gt; advanced R topics such as functions, object orientated programming, good programming practice&lt;/p&gt;
+&lt;p&gt;&lt;i class=&#34;fas  fa-times &#34;&gt;&lt;/i&gt; package development&lt;/p&gt;
+&lt;p&gt;&lt;i class=&#34;fas  fa-times &#34;&gt;&lt;/i&gt; git/ github/ version control&lt;/p&gt;
+&lt;center&gt;
+&lt;h2&gt;
+So why am I telling you all of this?
+&lt;/h2&gt;
+&lt;/center&gt;
+&lt;div id=&#34;everyone-still-has-something-to-learn-in-r-even-if-we-have-been-using-it-for-a-long-time&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;1) Everyone still has something to learn in R, even if we have been using it for a long time&lt;/h4&gt;
+&lt;p&gt;Especially those of us who learnt R ‘formally’! For example, a lot of us are learning the &lt;code&gt;tidyverse&lt;/code&gt; along side you! If you ask us for how to do things, we might give you a long baseR solution…&lt;/p&gt;
+&lt;center&gt;
+&lt;p&gt;&lt;img src=&#34;/static/img/harder.jpg&#34; width=&#34;400px&#34; /&gt;&lt;/p&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;div id=&#34;learning-these-things-takes-time-and-patience-and-life-does-get-in-the-way&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;2) Learning these things takes time and patience, and life does get in the way!&lt;/h4&gt;
+&lt;p&gt;I thought I would spend all my PhD reading textbooks and learning new R techiniques (see below). However research, admin, and teaching can get in the way!&lt;/p&gt;
+&lt;center&gt;
+&lt;p&gt;&lt;img src=&#34;/static/img/tenor.gif&#34; height=&#34;400&#34;&gt;&lt;/p&gt;
+&lt;/center&gt;
+&lt;center&gt;
+&lt;h2&gt;
+My tips on learning &lt;i class=&#34;fab  fa-r-project fa-2x faa-pulse animated &#34;&gt;&lt;/i&gt;
+&lt;/h2&gt;
+&lt;/center&gt;
+&lt;ul&gt;
+&lt;li&gt;My best improvements in R came from having clear motivations for WHY I was learning new skills&lt;/li&gt;
+&lt;li&gt;I learned &lt;code&gt;ggplot2&lt;/code&gt; to make better data vis for presentations/publications/ packages&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;I learned how to develop packages to complement my research and to also improve workflow&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Learn from examples! Eg, this presentation was based off Alison Hill’s R Ladies talk about blogdown! Work smart, not hard.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Having a mentor is extremely useful. I found my coding to improve drastically after my honours year as I had great guidance from an expert (my supervisor).&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Bayesian hypothesis tests with diffuse priors: Can we have our cake and eat it too?</title>
       <link>/publication/bayesian-testing/</link>
       <pubDate>Wed, 25 Oct 2017 00:00:00 +1100</pubDate>
