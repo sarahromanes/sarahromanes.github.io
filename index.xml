@@ -25,7 +25,7 @@
 &lt;h1&gt;The Launch!&lt;/h1&gt;
 &lt;p&gt;Wow, what a launch! Thank you so much &lt;a href=&#34;https://twitter.com/JenRichmondPhD&#34;&gt;&lt;strong&gt;Jen&lt;/strong&gt;&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/djnavarro&#34;&gt;&lt;strong&gt;Dani&lt;/strong&gt;&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/StephdeSilva&#34;&gt;&lt;strong&gt;Steph&lt;/strong&gt;&lt;/a&gt;, and &lt;a href=&#34;https://twitter.com/williamslisaphd&#34;&gt;&lt;strong&gt;Lisa&lt;/strong&gt;&lt;/a&gt; for all your work setting up this launch! I can’t wait to see what the future events will hold! I was lucky enough to be able to give a lightening talk describing my R journey below - of which I have summarised for those who could not be there! You can also find the slides &lt;a href=&#34;https://sarahromanes.github.io/recent-talk&#34;&gt;&lt;strong&gt;here&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
 &lt;center&gt;
-&lt;p&gt;&lt;img src=&#34;/static/img/montage.jpg&#34; width=&#34;700px&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/img/montage.jpg&#34; width=&#34;700px&#34; /&gt;&lt;/p&gt;
 &lt;/center&gt;
 &lt;/div&gt;
 &lt;div id=&#34;my-long-journey-using-r---a-summary&#34; class=&#34;section level1&#34;&gt;
@@ -55,14 +55,14 @@ So why am I telling you all of this?
 &lt;h4&gt;1) Everyone still has something to learn in R, even if we have been using it for a long time&lt;/h4&gt;
 &lt;p&gt;Especially those of us who learnt R ‘formally’! For example, a lot of us are learning the &lt;code&gt;tidyverse&lt;/code&gt; along side you! If you ask us for how to do things, we might give you a long baseR solution…&lt;/p&gt;
 &lt;center&gt;
-&lt;p&gt;&lt;img src=&#34;/static/img/harder.jpg&#34; width=&#34;400px&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/img/harder.jpg&#34; width=&#34;400px&#34; /&gt;&lt;/p&gt;
 &lt;/center&gt;
 &lt;/div&gt;
 &lt;div id=&#34;learning-these-things-takes-time-and-patience-and-life-does-get-in-the-way&#34; class=&#34;section level4&#34;&gt;
 &lt;h4&gt;2) Learning these things takes time and patience, and life does get in the way!&lt;/h4&gt;
 &lt;p&gt;I thought I would spend all my PhD reading textbooks and learning new R techiniques (see below). However research, admin, and teaching can get in the way!&lt;/p&gt;
 &lt;center&gt;
-&lt;p&gt;&lt;img src=&#34;/static/img/tenor.gif&#34; height=&#34;400&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/img/tenor.gif&#34; height=&#34;400&#34;&gt;&lt;/p&gt;
 &lt;/center&gt;
 &lt;center&gt;
 &lt;h2&gt;
