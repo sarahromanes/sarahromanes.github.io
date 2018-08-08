@@ -35,11 +35,12 @@
 &lt;/div&gt;
 &lt;div id=&#34;some-data-cleaning&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;2) Some data cleaning&lt;/h3&gt;
-&lt;p&gt;Before we go any further, we are going to have to load some libraries into R. To save time, you could simply load the &lt;code&gt;tidyverse&lt;/code&gt; package for all requirements to be loaded. Specifically, we will be using the &lt;code&gt;dplyr&lt;/code&gt; and &lt;code&gt;lubridate&lt;/code&gt; packages for this step.&lt;/p&gt;
+&lt;p&gt;Before we go any further, we are going to have to load some libraries into R. To save time, you could simply load the &lt;code&gt;tidyverse&lt;/code&gt; package for all requirements to be loaded. Specifically, we will be using the &lt;code&gt;dplyr&lt;/code&gt; and &lt;code&gt;lubridate&lt;/code&gt; packages for this step. You will also need the &lt;code&gt;magrittr&lt;/code&gt; package for the pipe function (optional).&lt;/p&gt;
 &lt;p&gt;The &lt;code&gt;steps_export.csv&lt;/code&gt; file contains &lt;strong&gt;three&lt;/strong&gt; variables - the start date time for when data was collected, the finish date time, and the number of steps in that period. The data is grouped by the hour, which is very handy. We first rename the column names for ease of analysis, and use the &lt;code&gt;lubridate&lt;/code&gt; package to convert our date into something sensible that R can understand (it is initially read in as a factor). We then use the &lt;code&gt;dplyr&lt;/code&gt; package to create new Time and Date columns, which is needed by the &lt;code&gt;sugrrants&lt;/code&gt; package later on.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(lubridate)
 library(dplyr)
 library(stringr)
+library(magrittr)
 
 data &amp;lt;- read.csv(&amp;quot;steps_export.csv&amp;quot;)
 colnames(data) &amp;lt;- c(&amp;quot;Start&amp;quot;, &amp;quot;Finish&amp;quot;, &amp;quot;Count&amp;quot;)
@@ -106,7 +107,7 @@ head(data_shift)&lt;/code&gt;&lt;/pre&gt;
 ## 4 2018-07-08 11:00:00     0   11 2018-07-08
 ## 5 2018-07-08 12:00:00     0   12 2018-07-08
 ## 6 2018-07-08 13:00:00     0   13 2018-07-08&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;del &amp;lt;- which(data_shift$Date==as.Date(&amp;quot;2018-07-08&amp;quot;))
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;del &amp;lt;- which(data_shift$Date==as.Date(&amp;quot;2018-07-09&amp;quot;))
 inds_shift &amp;lt;- inds_shift[-del]
 
 data[inds_shift,] &amp;lt;- data_shift[-del,]&lt;/code&gt;&lt;/pre&gt;
@@ -132,6 +133,47 @@ prettify(p, label.padding = unit(0.08, &amp;quot;lines&amp;quot;))&lt;/code&gt;&
 prettify(p, label.padding = unit(0.08, &amp;quot;lines&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/post/2018-08-08-exploring-step-count-data-with-sugrrants_files/figure-html/color-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;What do you think? My steps definitely went up when I was away! Can you spot the time when I walked 8km in 30 degree heat from Wicker Park to downtown in Chicago? Or the day where it rained in Tortuguero all day in Costa Rica and the only walking I did was to see the turtle laying eggs at 8pm?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;an-alternative-view---a-cumulative-step-plot&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;6) An alternative view - a cumulative step plot!&lt;/h3&gt;
+&lt;p&gt;I also thought I would try a cumulative sum step plot. Using a &lt;strong&gt;for loop&lt;/strong&gt;, yes, a loop (I know some people will already dismiss me at this point, but I love for loops - sue me!), I calculate the cumulative sum over entries that share the same date.&lt;/p&gt;
+&lt;center&gt;
+&lt;iframe src=&#34;https://giphy.com/embed/JeYi8mZamkZ1e&#34; width=&#34;480&#34; height=&#34;270&#34; frameBorder=&#34;0&#34; class=&#34;giphy-embed&#34; allowFullScreen&gt;
+&lt;/iframe&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://giphy.com/gifs/suits-usa-JeYi8mZamkZ1e&#34;&gt;via GIPHY&lt;/a&gt;
+&lt;/p&gt;
+&lt;/center&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;data &amp;lt;- data %&amp;gt;% mutate(Cumulative_Count=Count)
+for(i in 1:nrow(data)){
+  if(i == 1){
+    data$Cumulative_Count[i]=data$Count[i]
+  }else if(data$Date[i]!=data$Date[i-1]){
+    data$Cumulative_Count[i]=data$Count[i]
+  }else{
+    data$Cumulative_Count[i]=data$Count[i]+data$Cumulative_Count[i-1]
+  }
+}
+
+head(data)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##                Finish     Count Time       Date Region Cumulative_Count
+## 1 2018-06-17 17:00:00 347.00000   17 2018-06-17 Sydney         347.0000
+## 2 2018-06-17 18:00:00  22.00000   18 2018-06-17 Sydney         369.0000
+## 3 2018-06-17 19:00:00 114.17046   19 2018-06-17 Sydney         483.1705
+## 4 2018-06-17 20:00:00  20.82954   20 2018-06-17 Sydney         504.0000
+## 5 2018-06-17 21:00:00   0.00000   21 2018-06-17 Sydney         504.0000
+## 6 2018-06-17 22:00:00   0.00000   22 2018-06-17 Sydney         504.0000&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;data_cal &amp;lt;- data %&amp;gt;% frame_calendar(
+  x = Time, y = Cumulative_Count, date = Date, calendar = &amp;quot;monthly&amp;quot;
+)
+
+p &amp;lt;- data_cal %&amp;gt;%
+  ggplot(aes(x = .Time, y = .Cumulative_Count, group = Date, colour=Region)) +
+  geom_line() +
+  theme(legend.position = &amp;quot;bottom&amp;quot;)
+prettify(p, label.padding = unit(0.08, &amp;quot;lines&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2018-08-08-exploring-step-count-data-with-sugrrants_files/figure-html/cumulative-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Something looks pretty funny around the transition between Costa Rica and Sydney time zones. Most likely I’ve made some errors when accounting for the two timezones. However, that shall be a post for another day! Right now, time for some tea… and pizza&lt;/p&gt;
 &lt;center&gt;
 &lt;h2&gt;
 Take home message - eat that pizza when travelling - you’ll be back to a sloth when at home!

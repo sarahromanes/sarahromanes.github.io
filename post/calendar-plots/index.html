@@ -268,7 +268,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    6 min read
+    7 min read
   </span>
   
 
@@ -356,11 +356,12 @@
 </div>
 <div id="some-data-cleaning" class="section level3">
 <h3>2) Some data cleaning</h3>
-<p>Before we go any further, we are going to have to load some libraries into R. To save time, you could simply load the <code>tidyverse</code> package for all requirements to be loaded. Specifically, we will be using the <code>dplyr</code> and <code>lubridate</code> packages for this step.</p>
+<p>Before we go any further, we are going to have to load some libraries into R. To save time, you could simply load the <code>tidyverse</code> package for all requirements to be loaded. Specifically, we will be using the <code>dplyr</code> and <code>lubridate</code> packages for this step. You will also need the <code>magrittr</code> package for the pipe function (optional).</p>
 <p>The <code>steps_export.csv</code> file contains <strong>three</strong> variables - the start date time for when data was collected, the finish date time, and the number of steps in that period. The data is grouped by the hour, which is very handy. We first rename the column names for ease of analysis, and use the <code>lubridate</code> package to convert our date into something sensible that R can understand (it is initially read in as a factor). We then use the <code>dplyr</code> package to create new Time and Date columns, which is needed by the <code>sugrrants</code> package later on.</p>
 <pre class="r"><code>library(lubridate)
 library(dplyr)
 library(stringr)
+library(magrittr)
 
 data &lt;- read.csv(&quot;steps_export.csv&quot;)
 colnames(data) &lt;- c(&quot;Start&quot;, &quot;Finish&quot;, &quot;Count&quot;)
@@ -427,7 +428,7 @@ head(data_shift)</code></pre>
 ## 4 2018-07-08 11:00:00     0   11 2018-07-08
 ## 5 2018-07-08 12:00:00     0   12 2018-07-08
 ## 6 2018-07-08 13:00:00     0   13 2018-07-08</code></pre>
-<pre class="r"><code>del &lt;- which(data_shift$Date==as.Date(&quot;2018-07-08&quot;))
+<pre class="r"><code>del &lt;- which(data_shift$Date==as.Date(&quot;2018-07-09&quot;))
 inds_shift &lt;- inds_shift[-del]
 
 data[inds_shift,] &lt;- data_shift[-del,]</code></pre>
@@ -453,6 +454,47 @@ prettify(p, label.padding = unit(0.08, &quot;lines&quot;))</code></pre>
 prettify(p, label.padding = unit(0.08, &quot;lines&quot;))</code></pre>
 <p><img src="/post/2018-08-08-exploring-step-count-data-with-sugrrants_files/figure-html/color-1.png" width="672" /></p>
 <p>What do you think? My steps definitely went up when I was away! Can you spot the time when I walked 8km in 30 degree heat from Wicker Park to downtown in Chicago? Or the day where it rained in Tortuguero all day in Costa Rica and the only walking I did was to see the turtle laying eggs at 8pm?</p>
+</div>
+<div id="an-alternative-view---a-cumulative-step-plot" class="section level3">
+<h3>6) An alternative view - a cumulative step plot!</h3>
+<p>I also thought I would try a cumulative sum step plot. Using a <strong>for loop</strong>, yes, a loop (I know some people will already dismiss me at this point, but I love for loops - sue me!), I calculate the cumulative sum over entries that share the same date.</p>
+<center>
+<iframe src="https://giphy.com/embed/JeYi8mZamkZ1e" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen>
+</iframe>
+<p>
+<a href="https://giphy.com/gifs/suits-usa-JeYi8mZamkZ1e">via GIPHY</a>
+</p>
+</center>
+<pre class="r"><code>data &lt;- data %&gt;% mutate(Cumulative_Count=Count)
+for(i in 1:nrow(data)){
+  if(i == 1){
+    data$Cumulative_Count[i]=data$Count[i]
+  }else if(data$Date[i]!=data$Date[i-1]){
+    data$Cumulative_Count[i]=data$Count[i]
+  }else{
+    data$Cumulative_Count[i]=data$Count[i]+data$Cumulative_Count[i-1]
+  }
+}
+
+head(data)</code></pre>
+<pre><code>##                Finish     Count Time       Date Region Cumulative_Count
+## 1 2018-06-17 17:00:00 347.00000   17 2018-06-17 Sydney         347.0000
+## 2 2018-06-17 18:00:00  22.00000   18 2018-06-17 Sydney         369.0000
+## 3 2018-06-17 19:00:00 114.17046   19 2018-06-17 Sydney         483.1705
+## 4 2018-06-17 20:00:00  20.82954   20 2018-06-17 Sydney         504.0000
+## 5 2018-06-17 21:00:00   0.00000   21 2018-06-17 Sydney         504.0000
+## 6 2018-06-17 22:00:00   0.00000   22 2018-06-17 Sydney         504.0000</code></pre>
+<pre class="r"><code>data_cal &lt;- data %&gt;% frame_calendar(
+  x = Time, y = Cumulative_Count, date = Date, calendar = &quot;monthly&quot;
+)
+
+p &lt;- data_cal %&gt;%
+  ggplot(aes(x = .Time, y = .Cumulative_Count, group = Date, colour=Region)) +
+  geom_line() +
+  theme(legend.position = &quot;bottom&quot;)
+prettify(p, label.padding = unit(0.08, &quot;lines&quot;))</code></pre>
+<p><img src="/post/2018-08-08-exploring-step-count-data-with-sugrrants_files/figure-html/cumulative-1.png" width="672" /></p>
+<p>Something looks pretty funny around the transition between Costa Rica and Sydney time zones. Most likely I’ve made some errors when accounting for the two timezones. However, that shall be a post for another day! Right now, time for some tea… and pizza</p>
 <center>
 <h2>
 Take home message - eat that pizza when travelling - you’ll be back to a sloth when at home!

@@ -44,7 +44,7 @@ Onwards and upwards with the iPhone data!
 
 ### 2) Some data cleaning
 
-Before we go any further, we are going to have to load some libraries into R. To save time, you could simply load the `tidyverse` package for all requirements to be loaded. Specifically, we will be using the `dplyr` and `lubridate` packages for this step.
+Before we go any further, we are going to have to load some libraries into R. To save time, you could simply load the `tidyverse` package for all requirements to be loaded. Specifically, we will be using the `dplyr` and `lubridate` packages for this step. You will also need the `magrittr` package for the pipe function (optional).
 
 The `steps_export.csv` file contains **three** variables - the start date time for when data was collected, the finish date time, and the number of steps in that period. The data is grouped by the hour, which is very handy. We first rename the column names for ease of analysis, and use the `lubridate` package to convert our date into something sensible that R can understand (it is initially read in as a factor). We then use the `dplyr` package to create new Time and Date columns, which is needed by the `sugrrants` package later on.
 
@@ -53,6 +53,7 @@ The `steps_export.csv` file contains **three** variables - the start date time f
 library(lubridate)
 library(dplyr)
 library(stringr)
+library(magrittr)
 
 data <- read.csv("steps_export.csv")
 colnames(data) <- c("Start", "Finish", "Count")
@@ -132,7 +133,7 @@ data_shift <- mutate(data_shift, Date=date(Finish))
 data_shift <- mutate(data_shift, Time=hour(Finish))
 head(data_shift)
 
-del <- which(data_shift$Date==as.Date("2018-07-08"))
+del <- which(data_shift$Date==as.Date("2018-07-09"))
 inds_shift <- inds_shift[-del]
 
 data[inds_shift,] <- data_shift[-del,]
@@ -234,6 +235,44 @@ prettify(p, label.padding = unit(0.08, "lines"))
 ```
 
 What do you think? My steps definitely went up when I was away! Can you spot the time when I walked 8km in 30 degree heat from Wicker Park to downtown in Chicago? Or the day where it rained in Tortuguero all day in Costa Rica and the only walking I did was to see the turtle laying eggs at 8pm?
+
+### 6) An alternative view - a cumulative step plot!
+
+I also thought I would try a cumulative sum step plot. Using a **for loop**, yes, a loop (I know some people will already dismiss me at this point, but I love for loops - sue me!), I calculate the cumulative sum over entries that share the same date.
+
+<center>
+
+<iframe src="https://giphy.com/embed/JeYi8mZamkZ1e" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/suits-usa-JeYi8mZamkZ1e">via GIPHY</a></p>
+
+</center>
+
+```{r cumulative}
+data <- data %>% mutate(Cumulative_Count=Count)
+for(i in 1:nrow(data)){
+  if(i == 1){
+    data$Cumulative_Count[i]=data$Count[i]
+  }else if(data$Date[i]!=data$Date[i-1]){
+    data$Cumulative_Count[i]=data$Count[i]
+  }else{
+    data$Cumulative_Count[i]=data$Count[i]+data$Cumulative_Count[i-1]
+  }
+}
+
+head(data)
+
+data_cal <- data %>% frame_calendar(
+  x = Time, y = Cumulative_Count, date = Date, calendar = "monthly"
+)
+
+p <- data_cal %>%
+  ggplot(aes(x = .Time, y = .Cumulative_Count, group = Date, colour=Region)) +
+  geom_line() +
+  theme(legend.position = "bottom")
+prettify(p, label.padding = unit(0.08, "lines"))
+
+```
+
+Something looks pretty funny around the transition between Costa Rica and Sydney time zones. Most likely I've made some errors when accounting for the two timezones. However, that shall be a post for another day! Right now, time for some tea... and pizza 
 
 <center> <h2> Take home message - eat that pizza when travelling - you'll be back to a sloth when at home! </h2> </center>
 
