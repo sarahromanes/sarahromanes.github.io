@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>/post/calendar-plots/</loc>
+      <lastmod>2018-08-08T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/publication/multida/</loc>
       <lastmod>2018-07-05T00:00:00+10:00</lastmod>
     </url>
@@ -115,6 +124,26 @@
     <url>
     
       <loc>/categories/</loc>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/data-viz/</loc>
+      <lastmod>2018-08-08T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/categories/data-viz/</loc>
+      <lastmod>2018-08-08T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     

@@ -11,6 +11,141 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>An argument for eating that pizza whilst on vacation - exploring the sugrrants package</title>
+      <link>/post/calendar-plots/</link>
+      <pubDate>Wed, 08 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/calendar-plots/</guid>
+      <description>&lt;div id=&#34;ah-back-to-reality&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Ah, back to reality!&lt;/h1&gt;
+&lt;p&gt;Last month, I was fortunate enough to be able to travel away from the cold Sydney winter over to Central and North America for a holiday and also to present my work on multiDA at JSM in Vancouver. Whilst at JSM, I was able to hear &lt;a href=&#34;https://twitter.com/earowang&#34;&gt;&lt;strong&gt;Earo&lt;/strong&gt;&lt;/a&gt; present her work (along with &lt;a href=&#34;https://twitter.com/visnut&#34;&gt;&lt;strong&gt;Di&lt;/strong&gt;&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/robjhyndman&#34;&gt;&lt;strong&gt;Rob&lt;/strong&gt;&lt;/a&gt;) on making calendar plots in R, using data from pedestrian traffic in Melbourne (see more &lt;a href=&#34;https://github.com/earowang/sugrrants&#34;&gt;&lt;strong&gt;here&lt;/strong&gt;&lt;/a&gt;). I was super impressed by my work, and on my flight home I realised I could also have a crack at using the package by analysing my own step count data. I felt like I had walked a lot more whilst I was travelling - would the visualisation agree?&lt;/p&gt;
+&lt;center&gt;
+&lt;p&gt;&lt;img src=&#34;/img/cruise.jpg&#34; width=&#34;700px&#34; /&gt;&lt;/p&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;div id=&#34;step-count-visualisation-from-my-iphone-with-sugrrants&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Step count visualisation from my iPhone with &lt;code&gt;sugrrants&lt;/code&gt;&lt;/h1&gt;
+&lt;div id=&#34;export-data-off-the-iphone&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;1) Export data off the iPhone&lt;/h3&gt;
+&lt;p&gt;I use the &lt;a href=&#34;http://quantifiedself.com/qs-access-app/&#34;&gt;&lt;strong&gt;QS Access App&lt;/strong&gt;&lt;/a&gt; to export data from Apple Health into an easy to load &lt;code&gt;.csv&lt;/code&gt; format for analysis. If you have a Samsung like I did before (you’ll be able to notice on the resultant calendar plot the day and time I switched over), it is &lt;strong&gt;much&lt;/strong&gt; more difficult to export data from Samsung health. I had planned to combine that data with my iPhone data to no avail, the steps are long and require you to download old SDK’s from github and enable developer mode (see more &lt;a href=&#34;https://android.stackexchange.com/questions/117112/is-it-possible-to-export-the-s-health-data-from-a-samsung-s6-into-a-usable-data&#34;&gt;&lt;strong&gt;here&lt;/strong&gt;&lt;/a&gt;). In the end, the data I managed to get off completely struck off the date component, and it seemed like my Samsung was counting fake steps when I was sleeping every night at around 3-4am. Rubbish data.&lt;/p&gt;
+&lt;center&gt;
+&lt;p&gt;&lt;img src=&#34;/img/garbage.gif&#34; height=&#34;200&#34;&gt;&lt;/p&gt;
+&lt;/center&gt;
+&lt;p&gt;Onwards and upwards with the iPhone data!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;some-data-cleaning&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;2) Some data cleaning&lt;/h3&gt;
+&lt;p&gt;Before we go any further, we are going to have to load some libraries into R. To save time, you could simply load the &lt;code&gt;tidyverse&lt;/code&gt; package for all requirements to be loaded. Specifically, we will be using the &lt;code&gt;dplyr&lt;/code&gt; and &lt;code&gt;lubridate&lt;/code&gt; packages for this step.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;steps_export.csv&lt;/code&gt; file contains &lt;strong&gt;three&lt;/strong&gt; variables - the start date time for when data was collected, the finish date time, and the number of steps in that period. The data is grouped by the hour, which is very handy. We first rename the column names for ease of analysis, and use the &lt;code&gt;lubridate&lt;/code&gt; package to convert our date into something sensible that R can understand (it is initially read in as a factor). We then use the &lt;code&gt;dplyr&lt;/code&gt; package to create new Time and Date columns, which is needed by the &lt;code&gt;sugrrants&lt;/code&gt; package later on.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(lubridate)
+library(dplyr)
+library(stringr)
+
+data &amp;lt;- read.csv(&amp;quot;steps_export.csv&amp;quot;)
+colnames(data) &amp;lt;- c(&amp;quot;Start&amp;quot;, &amp;quot;Finish&amp;quot;, &amp;quot;Count&amp;quot;)
+data &amp;lt;- mutate_at(data, vars(-Count), funs(dmy_hm(.)))
+data &amp;lt;- data %&amp;gt;% select (-c(Start)) #drop `Start` variable - only care about counts at the end of the hour.
+
+data &amp;lt;- mutate(data, Time=hour(Finish))
+data &amp;lt;- mutate(data, Date=date(Finish))
+
+head(data)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##                Finish     Count Time       Date
+## 1 2018-06-17 17:00:00 347.00000   17 2018-06-17
+## 2 2018-06-17 18:00:00  22.00000   18 2018-06-17
+## 3 2018-06-17 19:00:00 114.17046   19 2018-06-17
+## 4 2018-06-17 20:00:00  20.82954   20 2018-06-17
+## 5 2018-06-17 21:00:00   0.00000   21 2018-06-17
+## 6 2018-06-17 22:00:00   0.00000   22 2018-06-17&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;generate-an-intial-calendar-plot&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;3) Generate an intial calendar plot&lt;/h3&gt;
+&lt;p&gt;To generate our calendar plot, we use the &lt;code&gt;sugrrants&lt;/code&gt; package to transform our data frame into a frame_calendar format, which allows `&lt;code&gt;ggplot2&lt;/code&gt; to effectively plot the data in a calendar format. More details about the usage of the package can be found &lt;a href=&#34;https://pkg.earo.me/sugrrants/articles/frame-calendar.html&#34;&gt;&lt;strong&gt;here&lt;/strong&gt;&lt;/a&gt;, and the nifty tricks behind it &lt;a href=&#34;https://robjhyndman.com/papers/calendar-vis.pdf&#34;&gt;&lt;strong&gt;here&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(sugrrants)
+
+data_cal &amp;lt;- data %&amp;gt;% frame_calendar(
+  x = Time, y = Count, date = Date, calendar = &amp;quot;monthly&amp;quot;
+)
+
+p &amp;lt;- data_cal %&amp;gt;%
+  ggplot(aes(x = .Time, y = .Count, group = Date)) +
+  geom_line() +
+  theme(legend.position = &amp;quot;bottom&amp;quot;)
+
+p&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2018-08-08-exploring-step-count-data-with-sugrrants_files/figure-html/first%20plot-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;The initial plot sort of resembles a calendar. However, we can make it look much more calendar like with the use of the &lt;code&gt;prettify&lt;/code&gt; function, and voila! A calendar plot!&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;prettify(p, label.padding = unit(0.08, &amp;quot;lines&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2018-08-08-exploring-step-count-data-with-sugrrants_files/figure-html/prettyfy-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;a-slight-nuisance---time-zones&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;4) A slight nuisance - time zones!&lt;/h3&gt;
+&lt;p&gt;If you look closely, even though you can see the general pattern that whilst I am away (9th July to 6th Aug) I am more active than the preceding weeks, the timing of my steps is all off due to me hopping around different time zones, and the data when exported being set to Sydney (GMT + 10) time! Oh dear!&lt;/p&gt;
+&lt;center&gt;
+&lt;p&gt;&lt;img src=&#34;/img/travels.jpg&#34; width=&#34;700px&#34; /&gt;&lt;/p&gt;
+&lt;/center&gt;
+&lt;p&gt;Although I visited many different timezones at different times of the day (eg, on 24th July I went from GMT -6, to -4, to -5), I decided for days that I was in multiple time zones to pick one that described the day the best. For the month of July, I decided on the following, with a similar concept for August as well.&lt;/p&gt;
+&lt;center&gt;
+&lt;p&gt;&lt;img src=&#34;/img/calendar.jpg&#34; width=&#34;700px&#34; /&gt;&lt;/p&gt;
+&lt;/center&gt;
+&lt;p&gt;So how do I account for this?&lt;/p&gt;
+&lt;p&gt;I decided I would shift my whole data set from key travel dates forward and back all at once, and then for subsequent travel dates I would keep on shifting forwards and back until all dates had been accounted for. I won’t put in all the R code, but I include the code I used to make the first shift to the time zone in Costa Rica (-16 hrs from Sydney). Dates that overlapped with Sydney after being shifted back were deleted so that the steps in Sydney time would be plotted, with Costa Rica steps starting at midnight on 9th July.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# First shift - all data post 9 July to CR time zone, -16hrs #
+
+inds_shift &amp;lt;- which(data$Date &amp;gt;= as.Date(&amp;quot;2018-07-09&amp;quot;))
+data_shift &amp;lt;- data %&amp;gt;% filter(Date &amp;gt;= as.Date(&amp;quot;2018-07-09&amp;quot;))
+
+data_shift &amp;lt;- mutate_at(data_shift, vars(Finish), funs(.-hours(x=16)))
+data_shift &amp;lt;- mutate(data_shift, Date=date(Finish))
+data_shift &amp;lt;- mutate(data_shift, Time=hour(Finish))
+head(data_shift)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##                Finish Count Time       Date
+## 1 2018-07-08 08:00:00     0    8 2018-07-08
+## 2 2018-07-08 09:00:00     0    9 2018-07-08
+## 3 2018-07-08 10:00:00     0   10 2018-07-08
+## 4 2018-07-08 11:00:00     0   11 2018-07-08
+## 5 2018-07-08 12:00:00     0   12 2018-07-08
+## 6 2018-07-08 13:00:00     0   13 2018-07-08&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;del &amp;lt;- which(data_shift$Date==as.Date(&amp;quot;2018-07-08&amp;quot;))
+inds_shift &amp;lt;- inds_shift[-del]
+
+data[inds_shift,] &amp;lt;- data_shift[-del,]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Implementing these shifts, we have a more reasonable looking calendar plot. Woohoo!&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;data_cal &amp;lt;- data %&amp;gt;% frame_calendar(
+  x = Time, y = Count, date = Date, calendar = &amp;quot;monthly&amp;quot;
+)
+
+p &amp;lt;- data_cal %&amp;gt;%
+  ggplot(aes(x = .Time, y = .Count, group = Date)) +
+  geom_line() +
+  theme(legend.position = &amp;quot;bottom&amp;quot;)
+prettify(p, label.padding = unit(0.08, &amp;quot;lines&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2018-08-08-exploring-step-count-data-with-sugrrants_files/figure-html/new%20plot-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;add-in-some-colour&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;5) Add in some colour!&lt;/h3&gt;
+&lt;p&gt;The last step I did was to colour the dates by what area/timezone I was in, by adding in a column called &lt;code&gt;Region&lt;/code&gt; which I used in the plotting step to add a colour element. I also cleaned up and removed data from the 5th of August - I left SFO at 11pm on 4th August local time and arrived 6.30am in Sydney on 6th August - so data on that day did not make sense in either timezone.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;p &amp;lt;- data_cal %&amp;gt;%
+  ggplot(aes(x = .Time, y = .Count, group = Date, colour=Region)) +
+  geom_line() +
+  theme(legend.position = &amp;quot;bottom&amp;quot;)
+prettify(p, label.padding = unit(0.08, &amp;quot;lines&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2018-08-08-exploring-step-count-data-with-sugrrants_files/figure-html/color-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;What do you think? My steps definitely went up when I was away! Can you spot the time when I walked 8km in 30 degree heat from Wicker Park to downtown in Chicago? Or the day where it rained in Tortuguero all day in Costa Rica and the only walking I did was to see the turtle laying eggs at 8pm?&lt;/p&gt;
+&lt;center&gt;
+&lt;h2&gt;
+Take home message - eat that pizza when travelling - you’ll be back to a sloth when at home!
+&lt;/h2&gt;
+&lt;/center&gt;
+&lt;center&gt;
+&lt;p&gt;&lt;img src=&#34;/img/sloth.jpg&#34; width=&#34;700px&#34; /&gt;&lt;/p&gt;
+&lt;/center&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Diagonal Discriminant Analysis with Feature Selection for High Dimensional Data</title>
       <link>/publication/multida/</link>
       <pubDate>Thu, 05 Jul 2018 00:00:00 +1000</pubDate>

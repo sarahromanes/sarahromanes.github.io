@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Sarah Romanes</title>
-    <link>/post/</link>
-    <description>Recent content in Posts on Sarah Romanes</description>
+    <title>Data-viz on Sarah Romanes</title>
+    <link>/categories/data-viz/</link>
+    <description>Recent content in Data-viz on Sarah Romanes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +1100</lastBuildDate>
+    <lastBuildDate>Wed, 08 Aug 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/data-viz/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -19,15 +19,6 @@
       
       <guid>/post/calendar-plots/</guid>
       <description>Ah, back to reality!Last month, I was fortunate enough to be able to travel away from the cold Sydney winter over to Central and North America for a holiday and also to present my work on multiDA at JSM in Vancouver. Whilst at JSM, I was able to hear Earo present her work (along with Di and Rob) on making calendar plots in R, using data from pedestrian traffic in Melbourne (see more here).</description>
-    </item>
-    
-    <item>
-      <title>R-Ladies Sydney Launch!</title>
-      <link>/post/r-ladies-sydney-launch/</link>
-      <pubDate>Fri, 22 Jun 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/post/r-ladies-sydney-launch/</guid>
-      <description>The Launch!Wow, what a launch! Thank you so much Jen, Dani, Steph, and Lisa for all your work setting up this launch! I can’t wait to see what the future events will hold! I was lucky enough to be able to give a lightening talk describing my R journey below - of which I have summarised for those who could not be there! You can also find the slides here.</description>
     </item>
     
   </channel>
