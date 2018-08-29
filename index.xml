@@ -11,6 +11,112 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>My first gganimate - exploring concepts from first year linear modelling!</title>
+      <link>/post/gganimate/</link>
+      <pubDate>Tue, 28 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/gganimate/</guid>
+      <description>&lt;p&gt;Have you ever had one of those moments whilst teaching where the content blows your mind? Today, whilst teaching MATH1005 at the University of Sydney, that exact thing happened to me.&lt;/p&gt;
+&lt;p&gt;This weeks content was focused on teaching the students the introductions to linear modelling. A very strightforward topic, and one ususally understood well by first years. However, a twist in our teaching style left me with such an appreciation for the simpler explanations in statistics.&lt;/p&gt;
+&lt;div id=&#34;linear-modelling---through-calculus&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Linear modelling - through calculus&lt;/h2&gt;
+&lt;p&gt;Throwing back to 6 years ago when I was a first year, and even back to a year ago when I first taught this course, linear regression was taught in a very standard way.&lt;/p&gt;
+&lt;p&gt;If I have some continuous bivariate data, and the relationship between the two variables looks linear upon inspection, how can one fit a line which is ‘optimal’? The standard way of answering this question is to treat the problem as a mathematical one, using &lt;strong&gt;calculus&lt;/strong&gt; to find the slope and intercept that minimise the sum of squares between the fitted line and the observed responses. See &lt;a href=&#34;https://math.stackexchange.com/a/63301&#34;&gt;&lt;strong&gt;here&lt;/strong&gt;&lt;/a&gt; for one of the many examples of this on StackExchange.&lt;/p&gt;
+&lt;p&gt;This usually is very easy to understand by first years, and seemed the simplest possible way of explanation I could concieve. But then came along another explanation…&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-sd-line&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;The SD Line&lt;/h2&gt;
+&lt;p&gt;Imagine you are trying to find the best line to fit the data, without any knowledge of calculus. How do you do it? An intuitive way might be to connect the point of averages &lt;span class=&#34;math inline&#34;&gt;\((\bar{x}, \bar{y})\)&lt;/span&gt; to &lt;span class=&#34;math inline&#34;&gt;\((\bar{x} + \text{SD}_x, \bar{y} + \text{SD}_y)\)&lt;/span&gt;. This is described in detail by Freedman, Pisani, and Purves in their book, &lt;a href=&#34;https://www.amazon.com/Statistics-Fourth-David-Freedman-ebook/dp/B00SLB5Q72&#34;&gt;&lt;strong&gt;Statistics&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/img/sdline.jpg&#34; width=&#34;700px&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Applying this to simulated data, we can visualise the SD line as follows:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)
+library(dplyr)
+library(magrittr)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gen.y &amp;lt;- function(x, rho) {
+  y &amp;lt;- rnorm(length(x)) 
+  x.perp &amp;lt;- residuals(lm(y ~ x))
+  rho * sd(x.perp) * x + x.perp * sd(x) * sqrt(1 - rho^2)
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x &amp;lt;- 1:50
+y &amp;lt;- gen.y(x, 0.5)
+
+dat &amp;lt;- data.frame(x=x, y=y)
+
+p.sd &amp;lt;- ggplot(dat %&amp;gt;% mutate(slope.sd=sd(y)/sd(x), 
+                        icept.sd= mean(y)- (sd(y)/sd(x))*mean(x)),
+                        aes(x, y)) + 
+        geom_point() + 
+        geom_abline(aes(intercept=icept.sd, slope=slope.sd), col=&amp;quot;red&amp;quot;)+
+        geom_vline(xintercept = mean(x)+sd(x))+
+        geom_vline(xintercept = mean(x)-sd(x))+
+        geom_point(aes(x=mean(x), y=mean(y)), colour=&amp;quot;dodgerblue&amp;quot;, size=5)+
+        ggtitle(&amp;quot;SD Line for simulated linear data with r = 0.5&amp;quot;)
+        
+p.sd&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2018-08-28-gganimate_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;We have highlighted the point of averages &lt;span class=&#34;math inline&#34;&gt;\((\bar{x}, \bar{y})\)&lt;/span&gt;, and 1 SD on either side of this point. We can see the SD line does a pretty decent job of describing the linear relationship! But alas! Let’s look closely at the extremes. Towards the RHS, the SD line &lt;strong&gt;overestimates&lt;/strong&gt; the y response, and towards the LHS, it &lt;strong&gt;underestimates&lt;/strong&gt; the values. How can we fix this?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;a-fix-the-regression&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;A fix? The regression&lt;/h2&gt;
+&lt;p&gt;The regression line is very similar to the SD line, with a slight change in how it is defined. The regression line is defined as the line connecting &lt;span class=&#34;math inline&#34;&gt;\((\bar{x}, \bar{y})\)&lt;/span&gt; to &lt;span class=&#34;math inline&#34;&gt;\((\bar{x} + \text{SD}_x, \bar{y} + r\text{SD}_y)\)&lt;/span&gt;. See the change? We have incorporated information about how the points &lt;strong&gt;cluster&lt;/strong&gt; around the line. As &lt;span class=&#34;math inline&#34;&gt;\(r\)&lt;/span&gt; is in magnitude between &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;, the only effect it can possbly have is to &lt;strong&gt;dampen&lt;/strong&gt; the gradient! As such, this will push our line down towards the positive extreme, and push the line up towards the negative extreme.&lt;/p&gt;
+&lt;p&gt;You can show that the equation of this line matches that derived by least squares estimation! Hoorah! How amazing is that???! Or is that only me…&lt;/p&gt;
+&lt;p&gt;See the effect on our simulated data below, taking advantage of the &lt;code&gt;geom_smooth()&lt;/code&gt; function in &lt;code&gt;ggplot2&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;p.r &amp;lt;- p.sd + geom_smooth(method=&amp;#39;lm&amp;#39;,formula=y~x) + ggtitle(&amp;quot;SD and Regression lines for simulated data, r=0.5&amp;quot;)
+p.r&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2018-08-28-gganimate_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;We can compare the two lines as follows&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/img/compare.jpg&#34; width=&#34;700px&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;And you can experiment with an app online by Berkeley &lt;a href=&#34;https://www.stat.berkeley.edu/~stark/Java/Html/Correlation.htm&#34;&gt;&lt;strong&gt;here&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;gganimate---a-success&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;code&gt;gganimate&lt;/code&gt; - a success!&lt;/h2&gt;
+&lt;p&gt;A cool feature about the regression line is that as &lt;span class=&#34;math inline&#34;&gt;\(r \rightarrow \pm 1\)&lt;/span&gt;, it approaches the SD line! So I thought I would devise my first &lt;code&gt;gganimate&lt;/code&gt; plot highlighting this. Feedback regarding the code is much appreciated!&lt;/p&gt;
+&lt;p&gt;If you don’t have &lt;code&gt;gganimate&lt;/code&gt;, you can download from here. Note, this is an updated version &lt;em&gt;not on CRAN&lt;/em&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# install.packages(&amp;#39;devtools&amp;#39;)
+devtools::install_github(&amp;#39;thomasp85/gganimate&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(gganimate)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;First, I set up the plot without the animation layers. It looks like a bit of a mess with out the frames! The red line is the SD line, and the blue lines are the regression lines.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x &amp;lt;- 0:50
+r &amp;lt;- seq(0, 1, by=0.05)
+
+y.vals &amp;lt;- unlist(purrr::map(r, ~gen.y(x, .)))
+x.vals &amp;lt;- rep(x, length(r))
+r.vals &amp;lt;- rep(r, each=length(x))
+
+
+data &amp;lt;- data.frame(x.vals=x.vals, y.vals=y.vals, r.vals=r.vals)
+head(data)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   x.vals     y.vals r.vals
+## 1      0   3.378741      0
+## 2      1   5.177455      0
+## 3      2   6.720238      0
+## 4      3  30.914982      0
+## 5      4 -22.112538      0
+## 6      5  -6.979840      0&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;p.set &amp;lt;- ggplot( data %&amp;gt;% group_by(r.vals) %&amp;gt;% mutate(slope.sd=sd(y.vals)/sd(x.vals), 
+                                     icept.sd= mean(y.vals)- (sd(y.vals)/sd(x.vals))*mean(x.vals),
+                                     slope.r=r.vals*sd(y.vals)/sd(x.vals),
+                                     icept.r= mean(y.vals)- (r.vals*sd(y.vals)/sd(x.vals))*mean(x.vals))
+             , aes(x.vals, y.vals)) + 
+  geom_point() + 
+  geom_abline(aes(intercept=icept.sd, slope=slope.sd), col=&amp;quot;red&amp;quot;) +
+  geom_abline(aes(intercept=icept.r, slope=slope.r), col=&amp;quot;blue&amp;quot;)
+
+
+p.set&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2018-08-28-gganimate_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Now, we add in the animation layers. And voila! We have an animation!&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;p.ani  &amp;lt;- p.set + labs(title = &amp;#39;Correlation Coefficient =  {round(frame_time, 2)}&amp;#39;, x = &amp;#39;x&amp;#39;, y = &amp;#39;y&amp;#39;) +
+  transition_time(r.vals) +
+  ease_aes(&amp;#39;linear&amp;#39;)
+
+p.ani&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2018-08-28-gganimate_files/figure-html/unnamed-chunk-8-1.gif&#34; /&gt;&lt;!-- --&gt;&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>An argument for eating that pizza whilst on vacation - exploring the sugrrants package</title>
       <link>/post/calendar-plots/</link>
       <pubDate>Wed, 08 Aug 2018 00:00:00 +0000</pubDate>
