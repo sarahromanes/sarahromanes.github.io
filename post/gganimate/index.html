@@ -409,13 +409,13 @@ r.vals &lt;- rep(r, each=length(x))
 
 data &lt;- data.frame(x.vals=x.vals, y.vals=y.vals, r.vals=r.vals)
 head(data)</code></pre>
-<pre><code>##   x.vals     y.vals r.vals
-## 1      0   3.378741      0
-## 2      1   5.177455      0
-## 3      2   6.720238      0
-## 4      3  30.914982      0
-## 5      4 -22.112538      0
-## 6      5  -6.979840      0</code></pre>
+<pre><code>##   x.vals      y.vals r.vals
+## 1      0   0.3860349      0
+## 2      1 -31.0735631      0
+## 3      2   5.7014300      0
+## 4      3  -6.3125740      0
+## 5      4   0.2866958      0
+## 6      5   4.6431992      0</code></pre>
 <pre class="r"><code>p.set &lt;- ggplot( data %&gt;% group_by(r.vals) %&gt;% mutate(slope.sd=sd(y.vals)/sd(x.vals), 
                                      icept.sd= mean(y.vals)- (sd(y.vals)/sd(x.vals))*mean(x.vals),
                                      slope.r=r.vals*sd(y.vals)/sd(x.vals),

@@ -86,13 +86,13 @@ r.vals &amp;lt;- rep(r, each=length(x))
 
 data &amp;lt;- data.frame(x.vals=x.vals, y.vals=y.vals, r.vals=r.vals)
 head(data)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##   x.vals     y.vals r.vals
-## 1      0   3.378741      0
-## 2      1   5.177455      0
-## 3      2   6.720238      0
-## 4      3  30.914982      0
-## 5      4 -22.112538      0
-## 6      5  -6.979840      0&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   x.vals      y.vals r.vals
+## 1      0   0.3860349      0
+## 2      1 -31.0735631      0
+## 3      2   5.7014300      0
+## 4      3  -6.3125740      0
+## 5      4   0.2866958      0
+## 6      5   4.6431992      0&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;p.set &amp;lt;- ggplot( data %&amp;gt;% group_by(r.vals) %&amp;gt;% mutate(slope.sd=sd(y.vals)/sd(x.vals), 
                                      icept.sd= mean(y.vals)- (sd(y.vals)/sd(x.vals))*mean(x.vals),
                                      slope.r=r.vals*sd(y.vals)/sd(x.vals),
@@ -309,7 +309,7 @@ Take home message - eat that pizza when travelling - you’ll be back to a sloth
       
       <guid>/post/r-ladies-sydney-launch/</guid>
       <description>&lt;link href=&#34;/rmarkdown-libs/font-awesome/css/fontawesome-all.min.css&#34; rel=&#34;stylesheet&#34; /&gt;
-&lt;link href=&#34;/rmarkdown-libs/font-awesome-animation/font-awesome-animation.min.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;link href=&#34;/rmarkdown-libs/font-awesome-animation/font-awesome-animation-emi.css&#34; rel=&#34;stylesheet&#34; /&gt;
 &lt;script src=&#34;/rmarkdown-libs/fontawesome/js/fontawesome-all.min.js&#34;&gt;&lt;/script&gt;
 
 
@@ -358,7 +358,7 @@ So why am I telling you all of this?
 &lt;/center&gt;
 &lt;center&gt;
 &lt;h2&gt;
-My tips on learning &lt;i class=&#34;fab  fa-r-project fa-2x faa-pulse animated &#34;&gt;&lt;/i&gt;
+My tips on learning &lt;span&gt;&amp;lt;i class=&#34;fab  fa-r-project fa-2x faa-pulse animated &#34;&amp;gt;&amp;lt;/i&amp;gt;&lt;/span&gt;
 &lt;/h2&gt;
 &lt;/center&gt;
 &lt;ul&gt;
@@ -393,6 +393,24 @@ My tips on learning &lt;i class=&#34;fab  fa-r-project fa-2x faa-pulse animated 
     </item>
     
     <item>
+      <title>R-Ladies Sydney - Introduction to Machine Learning - Part 1</title>
+      <link>/talk/r-ladies-ws-1/</link>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +1100</pubDate>
+      
+      <guid>/talk/r-ladies-ws-1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R-Ladies Sydney - Introduction to Machine Learning - Part 2</title>
+      <link>/talk/r-ladies-ws-2/</link>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +1100</pubDate>
+      
+      <guid>/talk/r-ladies-ws-2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>multiDA: Prediction of Melanoma Prognosis Class using a Multiclass Discriminant Analysis classifier with Feature Selection </title>
       <link>/talk/jsm-talk/</link>
       <pubDate>Sun, 01 Jan 2017 00:00:00 +1100</pubDate>
@@ -402,7 +420,7 @@ My tips on learning &lt;i class=&#34;fab  fa-r-project fa-2x faa-pulse animated 
     </item>
     
     <item>
-      <title>jenga</title>
+      <title>genDA</title>
       <link>/packages/jenga/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 +1000</pubDate>
       
