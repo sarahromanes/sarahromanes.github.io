@@ -86,13 +86,13 @@ r.vals &amp;lt;- rep(r, each=length(x))
 
 data &amp;lt;- data.frame(x.vals=x.vals, y.vals=y.vals, r.vals=r.vals)
 head(data)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##   x.vals       y.vals r.vals
-## 1      0   8.61369639      0
-## 2      1   9.53465158      0
-## 3      2   0.06220586      0
-## 4      3  38.21590524      0
-## 5      4 -14.63318502      0
-## 6      5   5.40769485      0&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   x.vals     y.vals r.vals
+## 1      0 -17.071776      0
+## 2      1   7.112183      0
+## 3      2  10.129332      0
+## 4      3 -25.638644      0
+## 5      4  26.779453      0
+## 6      5   7.190922      0&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;p.set &amp;lt;- ggplot( data %&amp;gt;% group_by(r.vals) %&amp;gt;% mutate(slope.sd=sd(y.vals)/sd(x.vals), 
                                      icept.sd= mean(y.vals)- (sd(y.vals)/sd(x.vals))*mean(x.vals),
                                      slope.r=r.vals*sd(y.vals)/sd(x.vals),
@@ -362,9 +362,11 @@ My tips on learning &lt;span&gt;&amp;lt;i class=&#34;fab  fa-r-project fa-2x faa
 &lt;/h2&gt;
 &lt;/center&gt;
 &lt;ul&gt;
-&lt;li&gt;My best improvements in R came from having clear motivations for WHY I was learning new skills&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;My best improvements in R came from having clear motivations for WHY I was learning new skills&lt;/p&gt;
+&lt;ul&gt;
 &lt;li&gt;I learned &lt;code&gt;ggplot2&lt;/code&gt; to make better data vis for presentations/publications/ packages&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;I learned how to develop packages to complement my research and to also improve workflow&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;I learned how to develop packages to complement my research and to also improve workflow&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Learn from examples! Eg, this presentation was based off Alison Hill’s R Ladies talk about blogdown! Work smart, not hard.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Having a mentor is extremely useful. I found my coding to improve drastically after my honours year as I had great guidance from an expert (my supervisor).&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -407,6 +409,15 @@ My tips on learning &lt;span&gt;&amp;lt;i class=&#34;fab  fa-r-project fa-2x faa
       <pubDate>Sun, 01 Jan 2017 00:00:00 +1100</pubDate>
       
       <guid>/talk/r-ladies-ws-2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>genDA: Using Variational Approximations to efficiently build a Generalised Discriminant Analysis Algorithm </title>
+      <link>/talk/acems-talk/</link>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +1100</pubDate>
+      
+      <guid>/talk/acems-talk/</guid>
       <description></description>
     </item>
     
