@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Wed, 25 Oct 2017 00:00:00 +1100</lastBuildDate>
+    <lastBuildDate>Wed, 25 Oct 2017 00:00:00 +0200</lastBuildDate>
     
 	<atom:link href="/publication_types/0/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,7 +15,7 @@
     <item>
       <title>Bayesian hypothesis tests with diffuse priors: Can we have our cake and eat it too?</title>
       <link>/publication/bayesian-testing/</link>
-      <pubDate>Wed, 25 Oct 2017 00:00:00 +1100</pubDate>
+      <pubDate>Wed, 25 Oct 2017 00:00:00 +0200</pubDate>
       
       <guid>/publication/bayesian-testing/</guid>
       <description></description>
