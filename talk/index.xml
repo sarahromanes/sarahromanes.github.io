@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +1100</lastBuildDate>
     
 	<atom:link href="/talk/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,7 +15,7 @@
     <item>
       <title>R-Ladies Lightning Talk</title>
       <link>/talk/r-ladies-talk/</link>
-      <pubDate>Sun, 01 Jan 2017 00:00:00 +0100</pubDate>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +1100</pubDate>
       
       <guid>/talk/r-ladies-talk/</guid>
       <description></description>
@@ -24,7 +24,7 @@
     <item>
       <title>R-Ladies Sydney - Introduction to Machine Learning - Part 1</title>
       <link>/talk/r-ladies-ws-1/</link>
-      <pubDate>Sun, 01 Jan 2017 00:00:00 +0100</pubDate>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +1100</pubDate>
       
       <guid>/talk/r-ladies-ws-1/</guid>
       <description></description>
@@ -33,7 +33,7 @@
     <item>
       <title>R-Ladies Sydney - Introduction to Machine Learning - Part 2</title>
       <link>/talk/r-ladies-ws-2/</link>
-      <pubDate>Sun, 01 Jan 2017 00:00:00 +0100</pubDate>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +1100</pubDate>
       
       <guid>/talk/r-ladies-ws-2/</guid>
       <description></description>
@@ -42,7 +42,7 @@
     <item>
       <title>genDA: Using Variational Approximations to efficiently build a Generalised Discriminant Analysis Algorithm </title>
       <link>/talk/acems-talk/</link>
-      <pubDate>Sun, 01 Jan 2017 00:00:00 +0100</pubDate>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +1100</pubDate>
       
       <guid>/talk/acems-talk/</guid>
       <description></description>
@@ -51,7 +51,7 @@
     <item>
       <title>multiDA and genDA: Discriminant Analysis Methods for Large Scale and Complex Datasets</title>
       <link>/talk/user2019/</link>
-      <pubDate>Sun, 01 Jan 2017 00:00:00 +0100</pubDate>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +1100</pubDate>
       
       <guid>/talk/user2019/</guid>
       <description></description>
@@ -60,7 +60,7 @@
     <item>
       <title>multiDA: Prediction of Melanoma Prognosis Class using a Multiclass Discriminant Analysis classifier with Feature Selection </title>
       <link>/talk/jsm-talk/</link>
-      <pubDate>Sun, 01 Jan 2017 00:00:00 +0100</pubDate>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +1100</pubDate>
       
       <guid>/talk/jsm-talk/</guid>
       <description></description>

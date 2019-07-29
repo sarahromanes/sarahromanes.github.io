@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +1100</lastBuildDate>
     
 	<atom:link href="/publication/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,7 +15,7 @@
     <item>
       <title>Diagonal Discriminant Analysis with Feature Selection for High Dimensional Data</title>
       <link>/publication/multida/</link>
-      <pubDate>Mon, 01 Jul 2019 00:00:00 +0200</pubDate>
+      <pubDate>Mon, 01 Jul 2019 00:00:00 +1000</pubDate>
       
       <guid>/publication/multida/</guid>
       <description></description>
@@ -24,7 +24,7 @@
     <item>
       <title>Bayesian hypothesis tests with diffuse priors: Can we have our cake and eat it too?</title>
       <link>/publication/bayesian-testing/</link>
-      <pubDate>Wed, 25 Oct 2017 00:00:00 +0200</pubDate>
+      <pubDate>Wed, 25 Oct 2017 00:00:00 +1100</pubDate>
       
       <guid>/publication/bayesian-testing/</guid>
       <description></description>

@@ -6,7 +6,7 @@
     <url>
     
       <loc>/publication/multida/</loc>
-      <lastmod>2019-07-01T00:00:00+02:00</lastmod>
+      <lastmod>2019-07-01T00:00:00+10:00</lastmod>
     </url>
     
   
@@ -42,7 +42,7 @@
     <url>
     
       <loc>/publication/bayesian-testing/</loc>
-      <lastmod>2017-10-25T00:00:00+02:00</lastmod>
+      <lastmod>2017-10-25T00:00:00+11:00</lastmod>
     </url>
     
   
@@ -51,7 +51,7 @@
     <url>
     
       <loc>/tags/academic/</loc>
-      <lastmod>2017-01-01T00:00:00+01:00</lastmod>
+      <lastmod>2017-01-01T00:00:00+11:00</lastmod>
     </url>
     
   
@@ -60,7 +60,7 @@
     <url>
     
       <loc>/post/</loc>
-      <lastmod>2017-01-01T00:00:00+01:00</lastmod>
+      <lastmod>2017-01-01T00:00:00+11:00</lastmod>
     </url>
     
   
@@ -69,7 +69,7 @@
     <url>
     
       <loc>/publication/</loc>
-      <lastmod>2017-01-01T00:00:00+01:00</lastmod>
+      <lastmod>2017-01-01T00:00:00+11:00</lastmod>
     </url>
     
   
@@ -78,7 +78,7 @@
     <url>
     
       <loc>/talk/r-ladies-talk/</loc>
-      <lastmod>2017-01-01T00:00:00+01:00</lastmod>
+      <lastmod>2017-01-01T00:00:00+11:00</lastmod>
     </url>
     
   
@@ -87,7 +87,7 @@
     <url>
     
       <loc>/talk/r-ladies-ws-1/</loc>
-      <lastmod>2017-01-01T00:00:00+01:00</lastmod>
+      <lastmod>2017-01-01T00:00:00+11:00</lastmod>
     </url>
     
   
@@ -96,7 +96,7 @@
     <url>
     
       <loc>/talk/r-ladies-ws-2/</loc>
-      <lastmod>2017-01-01T00:00:00+01:00</lastmod>
+      <lastmod>2017-01-01T00:00:00+11:00</lastmod>
     </url>
     
   
@@ -105,7 +105,7 @@
     <url>
     
       <loc>/talk/</loc>
-      <lastmod>2017-01-01T00:00:00+01:00</lastmod>
+      <lastmod>2017-01-01T00:00:00+11:00</lastmod>
     </url>
     
   
@@ -114,7 +114,7 @@
     <url>
     
       <loc>/talk/acems-talk/</loc>
-      <lastmod>2017-01-01T00:00:00+01:00</lastmod>
+      <lastmod>2017-01-01T00:00:00+11:00</lastmod>
     </url>
     
   
@@ -123,7 +123,7 @@
     <url>
     
       <loc>/talk/user2019/</loc>
-      <lastmod>2017-01-01T00:00:00+01:00</lastmod>
+      <lastmod>2017-01-01T00:00:00+11:00</lastmod>
     </url>
     
   
@@ -132,7 +132,7 @@
     <url>
     
       <loc>/talk/jsm-talk/</loc>
-      <lastmod>2017-01-01T00:00:00+01:00</lastmod>
+      <lastmod>2017-01-01T00:00:00+11:00</lastmod>
     </url>
     
   
@@ -141,7 +141,7 @@
     <url>
     
       <loc>/packages/jenga/</loc>
-      <lastmod>2016-04-27T00:00:00+02:00</lastmod>
+      <lastmod>2016-04-27T00:00:00+10:00</lastmod>
     </url>
     
   
@@ -150,7 +150,7 @@
     <url>
     
       <loc>/packages/multida/</loc>
-      <lastmod>2016-04-27T00:00:00+02:00</lastmod>
+      <lastmod>2016-04-27T00:00:00+10:00</lastmod>
     </url>
     
   
@@ -159,7 +159,7 @@
     <url>
     
       <loc>/publication_types/0/</loc>
-      <lastmod>2017-10-25T00:00:00+02:00</lastmod>
+      <lastmod>2017-10-25T00:00:00+11:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -169,7 +169,7 @@
     <url>
     
       <loc>/publication_types/2/</loc>
-      <lastmod>2019-07-01T00:00:00+02:00</lastmod>
+      <lastmod>2019-07-01T00:00:00+10:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -179,16 +179,6 @@
     <url>
     
       <loc>/categories/</loc>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/categories/data-viz/</loc>
-      <lastmod>2018-08-28T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -207,8 +197,18 @@
     
     <url>
     
+      <loc>/categories/data-viz/</loc>
+      <lastmod>2018-08-28T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/tags/machine-learning/</loc>
-      <lastmod>2016-04-27T00:00:00+02:00</lastmod>
+      <lastmod>2016-04-27T00:00:00+10:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -218,7 +218,7 @@
     <url>
     
       <loc>/packages/</loc>
-      <lastmod>2016-04-27T00:00:00+02:00</lastmod>
+      <lastmod>2016-04-27T00:00:00+10:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -228,17 +228,7 @@
     <url>
     
       <loc>/publication_types/</loc>
-      <lastmod>2017-10-25T00:00:00+02:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/categories/r-ladies/</loc>
-      <lastmod>2018-06-22T00:00:00+00:00</lastmod>
+      <lastmod>2017-10-25T00:00:00+11:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -257,8 +247,18 @@
     
     <url>
     
+      <loc>/categories/r-ladies/</loc>
+      <lastmod>2018-06-22T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/</loc>
-      <lastmod>2016-04-20T00:00:00+02:00</lastmod>
+      <lastmod>2016-04-20T00:00:00+10:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -268,7 +268,7 @@
     <url>
     
       <loc>/tags/</loc>
-      <lastmod>2017-01-01T00:00:00+01:00</lastmod>
+      <lastmod>2017-01-01T00:00:00+11:00</lastmod>
       <priority>0</priority>
     </url>
     

@@ -7,13 +7,13 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Wed, 20 Apr 2016 00:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 20 Apr 2016 00:00:00 +1000</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Diagonal Discriminant Analysis with Feature Selection for High Dimensional Data</title>
       <link>/publication/multida/</link>
-      <pubDate>Mon, 01 Jul 2019 00:00:00 +0200</pubDate>
+      <pubDate>Mon, 01 Jul 2019 00:00:00 +1000</pubDate>
       
       <guid>/publication/multida/</guid>
       <description></description>
@@ -379,7 +379,7 @@ My tips on learning &lt;span&gt;&amp;lt;i class=&#34;fab  fa-r-project fa-2x faa
     <item>
       <title>Bayesian hypothesis tests with diffuse priors: Can we have our cake and eat it too?</title>
       <link>/publication/bayesian-testing/</link>
-      <pubDate>Wed, 25 Oct 2017 00:00:00 +0200</pubDate>
+      <pubDate>Wed, 25 Oct 2017 00:00:00 +1100</pubDate>
       
       <guid>/publication/bayesian-testing/</guid>
       <description></description>
@@ -388,7 +388,7 @@ My tips on learning &lt;span&gt;&amp;lt;i class=&#34;fab  fa-r-project fa-2x faa
     <item>
       <title>R-Ladies Lightning Talk</title>
       <link>/talk/r-ladies-talk/</link>
-      <pubDate>Sun, 01 Jan 2017 00:00:00 +0100</pubDate>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +1100</pubDate>
       
       <guid>/talk/r-ladies-talk/</guid>
       <description></description>
@@ -397,7 +397,7 @@ My tips on learning &lt;span&gt;&amp;lt;i class=&#34;fab  fa-r-project fa-2x faa
     <item>
       <title>R-Ladies Sydney - Introduction to Machine Learning - Part 1</title>
       <link>/talk/r-ladies-ws-1/</link>
-      <pubDate>Sun, 01 Jan 2017 00:00:00 +0100</pubDate>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +1100</pubDate>
       
       <guid>/talk/r-ladies-ws-1/</guid>
       <description></description>
@@ -406,7 +406,7 @@ My tips on learning &lt;span&gt;&amp;lt;i class=&#34;fab  fa-r-project fa-2x faa
     <item>
       <title>R-Ladies Sydney - Introduction to Machine Learning - Part 2</title>
       <link>/talk/r-ladies-ws-2/</link>
-      <pubDate>Sun, 01 Jan 2017 00:00:00 +0100</pubDate>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +1100</pubDate>
       
       <guid>/talk/r-ladies-ws-2/</guid>
       <description></description>
@@ -415,7 +415,7 @@ My tips on learning &lt;span&gt;&amp;lt;i class=&#34;fab  fa-r-project fa-2x faa
     <item>
       <title>genDA: Using Variational Approximations to efficiently build a Generalised Discriminant Analysis Algorithm </title>
       <link>/talk/acems-talk/</link>
-      <pubDate>Sun, 01 Jan 2017 00:00:00 +0100</pubDate>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +1100</pubDate>
       
       <guid>/talk/acems-talk/</guid>
       <description></description>
@@ -424,7 +424,7 @@ My tips on learning &lt;span&gt;&amp;lt;i class=&#34;fab  fa-r-project fa-2x faa
     <item>
       <title>multiDA and genDA: Discriminant Analysis Methods for Large Scale and Complex Datasets</title>
       <link>/talk/user2019/</link>
-      <pubDate>Sun, 01 Jan 2017 00:00:00 +0100</pubDate>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +1100</pubDate>
       
       <guid>/talk/user2019/</guid>
       <description></description>
@@ -433,7 +433,7 @@ My tips on learning &lt;span&gt;&amp;lt;i class=&#34;fab  fa-r-project fa-2x faa
     <item>
       <title>multiDA: Prediction of Melanoma Prognosis Class using a Multiclass Discriminant Analysis classifier with Feature Selection </title>
       <link>/talk/jsm-talk/</link>
-      <pubDate>Sun, 01 Jan 2017 00:00:00 +0100</pubDate>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +1100</pubDate>
       
       <guid>/talk/jsm-talk/</guid>
       <description></description>
@@ -442,7 +442,7 @@ My tips on learning &lt;span&gt;&amp;lt;i class=&#34;fab  fa-r-project fa-2x faa
     <item>
       <title>genDA</title>
       <link>/packages/jenga/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 +0200</pubDate>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 +1000</pubDate>
       
       <guid>/packages/jenga/</guid>
       <description>&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus. Vestibulum sit amet erat at nulla eleifend gravida.&lt;/p&gt;
@@ -460,7 +460,7 @@ My tips on learning &lt;span&gt;&amp;lt;i class=&#34;fab  fa-r-project fa-2x faa
     <item>
       <title>multiDA</title>
       <link>/packages/multida/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 +0200</pubDate>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 +1000</pubDate>
       
       <guid>/packages/multida/</guid>
       <description>&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus. Vestibulum sit amet erat at nulla eleifend gravida.&lt;/p&gt;
